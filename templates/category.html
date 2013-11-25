@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% block paginate %}
+<nav id="nav-below">
+    {% if pnext %}
+    <div class="nav-previous">
+        <a href="{{ url_for('category', category = category, page = nextnum) }}"><span class="meta-nav">Old Posts</span></a>
+    </div>
+    {% endif %}
+    {% if prev %}
+    <div class="nav-next">
+        <a href="{{ url_for('category', category = category, page = prevnum) }}"><span class="meta-nav">-> New Posts</span></a>
+    </div>
+    {% endif %}
+</nav>
+{% endblock %}

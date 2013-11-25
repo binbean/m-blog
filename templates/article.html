@@ -1,0 +1,13 @@
+{% autoescape false %}
+<article>
+    <div class="entry-header">
+        <h1 class="entry-title"><a href="{{ url_for('article', name=article.name) }}">{{ article.name }}</a></h1>
+        <div class="entry-meta">
+            <span class="sep">Post on <time class="entry-date">{{ article.date }}</time></span>
+        </div>
+    </div>
+    <div class="entry-content">
+        {{ article.content }}
+    </div>
+</article>
+{% endautoescape %}

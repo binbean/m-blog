@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+    <meta charset="utf-8" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}" type="text/css" media="screen">
+	<link href="http://fonts.googleapis/css?family=Trade+Winds" type="text/css" media="screen">
+	<link rel="alternate" href="/rss.xml" type="application/rss+xml" title="RSS">
+	
+</head>
+<body>
+	<div id="content">
+		<header>
+			<hgroup>
+			<h1 id="site-title">
+                {% block title %}{% endblock %}
+			</h1>
+			<h2 id="site-description">
+				Here`s my blog :)
+			</h2>
+			<h2 class="site-nav">
+                <a href="{{ url_for('index') }}">首页</a>
+			</h2>
+            {% for category in categories %}
+			<h2 class="site-nav">
+                <a href="{{ url_for('category', category = category) }}">{{ category}}({{categories[category]}})</a>
+			</h2>
+            {% endfor %}
+			</hgroup>
+		</header>
+		<div id="main">
+			<div id="primary">
+                {% block content %}{% endblock %}
+                {% block paginate %}{% endblock %}
+                {% block comment %}{% endblock %}
+                
+			</div>
+	</div>
+    
+	<footer>
+		<div class="div-footer">
+			Powered by <a href="https://github.com/binbean">Binbean-BLOG</a>
+		</div>
+	</footer>
+</body>
+<html>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<a href="{{ url }}" title="Binbean">{{ title }}</a>
+{% endblock %}
+
+{% block content %}
+{% for article in articles %}
+    {% include 'article.html' %}
+{% endfor %}
+{% endblock %}
+{% block paginate %}
+<nav id="nav-below">
+    {% if pnext %}
+    <div class="nav-previous">
+        <a href="{{ url_for('index', page=nextnum) }}"><span class="meta-nav">Old Posts</span></a>
+    </div>
+    {% endif %}
+    {% if prev %}
+    <div class="nav-next">
+        <a href="{{ url_for('index', page=prevnum) }}"><span class="meta-nav">-> New Posts</span></a>
+    </div>
+    {% endif %}
+</nav>
+{% endblock %}
